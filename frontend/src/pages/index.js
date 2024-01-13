@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { FaPlus } from "react-icons/fa";
 
 export default function Home() {
   return (
@@ -19,6 +20,12 @@ export default function Home() {
       </Head>
       <main className="dashboard">
         <h1 className="dashboard__title">Hello World</h1>
+        <div className="dashboard__options">
+          <button className="dashboard__new-habit">
+            <FaPlus />
+            Create New Habit
+          </button>
+        </div>
       </main>
     </>
   );

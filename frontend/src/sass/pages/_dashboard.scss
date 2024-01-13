@@ -1,7 +1,25 @@
-// .dashboard {
-//   background-color: green;
+@use "../abstracts/" as *;
 
-//   &__title {
-//     color: blue;
-//   }
-// }
+.dashboard {
+  &__options {
+    margin-top: rem(30px);
+  }
+
+  &__new-habit {
+    cursor: pointer;
+    background: var(--color-background-light);
+    padding: rem(10px) rem(15px);
+    border-radius: 999px;
+    border: none;
+    display: flex;
+    gap: rem(10px);
+    align-items: center;
+    color: #fff;
+    transition: all 0.2s;
+
+    &:hover {
+      transform: translateY(-5px);
+      background: var(--color-background-lighter);
+    }
+  }
+}
