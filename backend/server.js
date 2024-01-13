@@ -9,7 +9,7 @@ db.once('open', ()=> console.log('Connection to Database'))
 
 app.use(express.json())
 
-const subscribersRouter  = require('../backend2/routes/subscribers')
+const subscribersRouter  = require('./routes/subscribers')
 app.use('/subscribers', subscribersRouter)
 
 port = 5000
