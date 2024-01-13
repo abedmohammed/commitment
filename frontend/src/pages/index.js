@@ -28,7 +28,8 @@ export default function Home() {
           </button>
         </div>
         <div className="habits">
-          <CommitChart />
+          <CommitChart colour="#603FEF" title="Hours ⌛⌛" />
+          <CommitChart colour="green" title="Leetcode 🧩" />
         </div>
       </main>
     </>

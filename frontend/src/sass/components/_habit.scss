@@ -1,0 +1,10 @@
+@use "../abstracts/" as *;
+
+.habit {
+  margin-top: rem(50px);
+
+  &__title {
+    font-weight: 300;
+    margin: 0 0 rem(10px) rem(10px);
+  }
+}

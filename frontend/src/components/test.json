@@ -1,0 +1,35 @@
+{
+    "data": {
+        "habits":{
+            "gym": {
+
+                "settings": {
+                    "title": "Gym 🦾",
+                    "type": "bool"
+                },
+                
+                "entries": {
+                    "15": true
+                }
+            },
+            "hoursworked": {
+
+                "settings": {
+                    "title": "Hours Worked ⌚",
+                    "type": "number"
+                },
+                
+                "entries": {
+                    "15": 5,
+                    "16": 1,
+                    "17": 2,
+                    "20": 2,
+                    "22": 5,
+                    "23": 8,
+                    "24": 9
+                }
+            }
+
+        }
+    }
+}
