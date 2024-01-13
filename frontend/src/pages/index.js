@@ -1,9 +1,16 @@
 import CommitChart from "@/components/CommitChart";
 import Head from "next/head";
+import Modal from "../components/Modal";
 import { FaPlus } from "react-icons/fa";
 import Button from "@/components/Button";
+import { useState } from "react";
 
 export default function Home() {
+  const [showCreate, setShowCreate] = useState(false);
+
+  const openCreateHandler = () => setShowCreate(true);
+  const closeCreateHandler = () => setShowCreate(false);
+
   return (
     <>
       <Head>
@@ -29,6 +36,9 @@ export default function Home() {
           <CommitChart colour="#603FEF" title="Hours ⌛⌛" />
           <CommitChart colour="green" title="Leetcode 🧩" />
         </div>
+        <Modal show={showCreate}>
+          <p>TEST</p>
+        </Modal>
       </main>
     </>
   );
