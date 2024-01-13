@@ -7,7 +7,7 @@
 
   &__new-habit {
     cursor: pointer;
-    background: var(--color-background-light);
+    background: var(--color-background-light-1);
     padding: rem(10px) rem(15px);
     border-radius: 999px;
     border: none;
@@ -19,7 +19,7 @@
 
     &:hover {
       transform: translateY(-5px);
-      background: var(--color-background-lighter);
+      background: var(--color-background-light-2);
     }
   }
 }

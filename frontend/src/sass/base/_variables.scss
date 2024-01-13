@@ -1,5 +1,10 @@
 html {
   --color-background: #1c1f24;
-  --color-background-light: #24272e;
-  --color-background-lighter: #282c33;
+  --color-background-light-1: #24272e;
+  --color-background-light-2: #282c33;
+  --color-background-light-3: #81858d;
+
+  --square-size: 15px;
+  --square-gap: 5px;
+  --week-width: calc(var(--square-size) + var(--square-gap));
 }

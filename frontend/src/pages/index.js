@@ -1,3 +1,4 @@
+import CommitChart from "@/components/CommitChart";
 import Head from "next/head";
 import { FaPlus } from "react-icons/fa";
 
@@ -25,6 +26,9 @@ export default function Home() {
             <FaPlus />
             Create New Habit
           </button>
+        </div>
+        <div className="habits">
+          <CommitChart />
         </div>
       </main>
     </>
