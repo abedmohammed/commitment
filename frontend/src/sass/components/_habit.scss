@@ -7,4 +7,24 @@
     font-weight: 300;
     margin: 0 0 rem(10px) rem(10px);
   }
+
+  &__info {
+    background-color: var(--color-background-light-1);
+    border: 1px var(--color-background-light-3) solid;
+    border-top: none;
+    border-radius: rem(10px);
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+    height: rem(70px);
+
+    display: flex;
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: rem(10px);
+    border-right: 1px var(--color-background-light-3) solid;
+    padding: 0 rem(20px);
+  }
 }

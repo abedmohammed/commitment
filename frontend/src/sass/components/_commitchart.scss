@@ -6,15 +6,17 @@
     "empty months"
     "days squares";
   grid-template-columns: auto 1fr;
-  grid-gap: 10px;
+  grid-gap: rem(10px);
 
-  font-size: 12px;
+  font-size: rem(12px);
   list-style: none;
 
-  padding: 20px;
+  padding: rem(20px);
   border: 1px var(--color-background-light-3) solid;
   background-color: var(--color-background-light-1);
-  border-radius: 10px;
+  border-radius: rem(10px);
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
 
   &__months {
     grid-area: months;

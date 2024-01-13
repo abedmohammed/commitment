@@ -1,0 +1,23 @@
+@use "../abstracts/" as *;
+
+.button {
+  cursor: pointer;
+  background: var(--color-background-light-1);
+  padding: rem(10px) rem(15px);
+  border-radius: 999px;
+  border: none;
+  display: flex;
+  gap: rem(10px);
+  align-items: center;
+  color: #fff;
+  transition: all 0.2s;
+
+  &--bordered {
+    border: 1px var(--color-background-light-3) solid;
+  }
+
+  &:hover {
+    transform: translateY(-5px);
+    background: var(--color-background-light-2);
+  }
+}

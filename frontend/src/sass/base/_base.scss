@@ -5,4 +5,7 @@ body {
   color: #fff;
   font-family: "Inter", sans-serif;
   margin: rem(60px) rem(80px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

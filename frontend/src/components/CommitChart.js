@@ -1,4 +1,6 @@
 import React from "react";
+import Button from "./Button";
+import { FaCog, FaRegCheckSquare } from "react-icons/fa";
 
 const CommitChart = ({ title, data, colour }) => {
   return (
@@ -44,6 +46,30 @@ const CommitChart = ({ title, data, colour }) => {
             );
           })}
         </ul>
+      </div>
+      <div className="habit__info">
+        <div className="habit__actions">
+          <Button
+            classes={"button--bordered"}
+            icon={<FaRegCheckSquare />}
+            text="Add Entry"
+          />
+          <Button
+            classes={"button--bordered"}
+            icon={<FaCog />}
+            text="Edit Habit"
+          />
+        </div>
+        <div className="habit__stats">
+          <div className="habit__stat">
+            <p className="habit__stat-label">Streak: </p>
+            <p className="habit__stat-value">8</p>
+          </div>
+          <div className="habit__stat">
+            <p className="habit__stat-label">Average: </p>
+            <p className="habit__stat-value">8</p>
+          </div>
+        </div>
       </div>
     </div>
   );
