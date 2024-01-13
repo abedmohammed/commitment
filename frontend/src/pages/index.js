@@ -1,6 +1,7 @@
 import CommitChart from "@/components/CommitChart";
 import Head from "next/head";
 import { FaPlus } from "react-icons/fa";
+import Button from "@/components/Button";
 
 export default function Home() {
   return (
@@ -20,12 +21,9 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="dashboard">
-        <h1 className="dashboard__title">Hello World</h1>
+        <h1 className="dashboard__title">Welcome Back, Michael</h1>
         <div className="dashboard__options">
-          <button className="dashboard__new-habit">
-            <FaPlus />
-            Create New Habit
-          </button>
+          <Button text={"Create New Habit"} icon={<FaPlus />}></Button>
         </div>
         <div className="habits">
           <CommitChart colour="#603FEF" title="Hours ⌛⌛" />
