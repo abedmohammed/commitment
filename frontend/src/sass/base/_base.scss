@@ -1,0 +1,7 @@
+@use "../abstracts/" as *;
+
+body {
+  background-color: var(--color-background);
+  color: #fff;
+  font-family: "Inter", sans-serif;
+}
