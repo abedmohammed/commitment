@@ -6,7 +6,7 @@ import Button from "@/components/Button";
 import { useState } from "react";
 
 export default function Home() {
-  const [showCreate, setShowCreate] = useState(false);
+  const [showCreate, setShowCreate] = useState(true);
 
   const openCreateHandler = () => setShowCreate(true);
   const closeCreateHandler = () => setShowCreate(false);
@@ -30,15 +30,21 @@ export default function Home() {
       <main className="dashboard">
         <h1 className="dashboard__title">Welcome Back, Michael</h1>
         <div className="dashboard__options">
-          <Button text={"Create New Habit"} icon={<FaPlus />}></Button>
+          <Button
+            clickHandler={openCreateHandler}
+            text={"Create New Habit"}
+            icon={<FaPlus />}
+          ></Button>
         </div>
         <div className="habits">
           <CommitChart colour="#603FEF" title="Hours ⌛⌛" />
           <CommitChart colour="green" title="Leetcode 🧩" />
         </div>
-        <Modal show={showCreate}>
-          <p>TEST</p>
-        </Modal>
+        <Modal
+          show={showCreate}
+          onCancel={closeCreateHandler}
+          title="Create A New Habit"
+        ></Modal>
       </main>
     </>
   );

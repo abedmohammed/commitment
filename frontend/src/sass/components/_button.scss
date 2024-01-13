@@ -17,7 +17,11 @@
   }
 
   &:hover {
-    transform: translateY(-5px);
+    transform: translateY(-3px);
     background: var(--color-background-light-2);
+  }
+
+  &:active {
+    transform: translateY(-1px);
   }
 }
