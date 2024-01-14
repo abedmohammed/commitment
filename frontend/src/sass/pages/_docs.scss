@@ -1,0 +1,20 @@
+@use "../abstracts/" as *;
+
+.docs {
+  &__paragraph {
+    margin-top: rem(20px);
+  }
+
+  &__subtitle {
+    margin-top: rem(40px);
+  }
+
+  &__image {
+    margin-top: rem(20px);
+    border-radius: 10px;
+  }
+
+  &__code {
+    margin-top: rem(20px);
+  }
+}

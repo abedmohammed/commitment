@@ -5,15 +5,23 @@ import { FaCog, FaPlus } from "react-icons/fa";
 import Button from "@/components/Button";
 import { useEffect, useState } from "react";
 import CreateHabit from "@/components/CreateHabit";
+import ApiMenu from "@/components/ApiMenu";
+
+import { Grid, RotatingLines } from "react-loader-spinner";
+import Header from "@/components/Header";
 
 export default function Home() {
   const [showCreate, setShowCreate] = useState(false);
+  const [showAPI, setShowAPI] = useState(false);
   const [habits, setHabits] = useState([]);
   const [loading, setLoading] = useState(true);
   const [currDay, setCurrDay] = useState(13);
 
   const openCreateHandler = () => setShowCreate(true);
   const closeCreateHandler = () => setShowCreate(false);
+
+  const openAPIHandler = () => setShowAPI(true);
+  const closeAPIHandler = () => setShowAPI(false);
 
   const setLoadingHandler = (isLoading) => {
     setLoading(isLoading);
@@ -62,6 +70,7 @@ export default function Home() {
 
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Header />
       <main className="dashboard">
         <h1 className="dashboard__title">Welcome Back, Michael</h1>
         <div className="dashboard__options">
@@ -70,8 +79,12 @@ export default function Home() {
             text={"Create New Habit"}
             icon={<FaPlus />}
           ></Button>
-          <Button text={"Settings"} icon={<FaCog />}></Button>
-          <input
+          <Button
+            text={"Settings"}
+            icon={<FaCog />}
+            clickHandler={openAPIHandler}
+          />
+          {/* <input
             type="number"
             className="form__text-input"
             value={currDay}
@@ -80,9 +93,9 @@ export default function Home() {
 
               setCurrDay(value);
             }}
-          />
+          /> */}
         </div>
-        {!loading && (
+        {!loading ? (
           <div className="habits">
             {habits.length > 0 &&
               habits.map((habit) => {
@@ -103,27 +116,20 @@ export default function Home() {
                   />
                 );
               })}
-            {/* <CommitChart
-            colour="#603FEF"
-            title="Hours Worked ⌛⌛"
-            unitType="Hours"
-            type="number"
-            data={[]}
-          />
-          <CommitChart
-            colour="green"
-            title="Leetcode 🧩"
-            unitType="questions"
-            type="number"
-            data={[]}
-          />
-          <CommitChart
-            colour="teal"
-            title="Gym 🦾"
-            unitType=""
-            type="boolean"
-            data={[]}
-          /> */}
+          </div>
+        ) : (
+          <div className="loading">
+            <RotatingLines
+              visible={true}
+              height="46"
+              width="46"
+              color="grey"
+              strokeWidth="5"
+              animationDuration="0.75"
+              ariaLabel="rotating-lines-loading"
+              wrapperStyle={{}}
+              wrapperClass=""
+            />
           </div>
         )}
 
@@ -133,6 +139,9 @@ export default function Home() {
           title="Create A New Habit"
         >
           <CreateHabit closeHandler={closeCreateHandler} addHabit={addHabit} />
+        </Modal>
+        <Modal show={showAPI} onCancel={closeAPIHandler} title="🔑 API Menu">
+          <ApiMenu data={habits} />
         </Modal>
       </main>
     </>
