@@ -2,7 +2,7 @@ GET http://localhost:5000/habits
 
 
 ###
-GET http://localhost:5000/habits/65a39eece622409143fbe75e
+GET http://localhost:5000/habits/65a3ad9d8f8bf5fb6b6b7a72
 
 
 ###
@@ -11,24 +11,14 @@ content-type: application/json
 
 {
   "settings": {
-    "title": "Gym 🦾",
+    "title": "Jinal (DONT DELETE DUMBASS)",
     "type": "bool",
     "colour": "#fff473"
-  },
-  "entries": [
-    {
-      "day": 1,
-      "value": "1"
-    },
-    {
-        "day": 1,
-        "value": "1"
-    }
-  ]
+  }
 }
 
 ###
-DELETE http://localhost:5000/habits/65a39ea0e622409143fbe756
+DELETE http://localhost:5000/habits/65a3b62db18868105c5ed659
 
 ###
 PATCH http://localhost:5000/habits/65a3a832aeab467e224eeac2
@@ -37,4 +27,13 @@ content-type: application/json
 {
     "title": "Gym changed 🦾",
     "colour": "#DA6F58"
+}
+
+###
+PATCH http://localhost:5000/habits/65a3b8e427d56984ee8ab333/addEntry
+content-type: application/json
+
+{
+  "day": 4,
+  "value": "8"
 }

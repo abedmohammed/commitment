@@ -32,6 +32,10 @@ const settingsSchema = new mongoose.Schema({
     type: Number,
     default: 0,
   },
+  average: {
+    type: Number,
+    default: 0,
+  }
 });
 
 const habitSchema = new mongoose.Schema({
