@@ -1,28 +1,55 @@
-const mongoose = require('mongoose')
+const mongoose = require("mongoose");
 
-const entry = new mongoose.Schema({
-    day: Number,
-    value: String
-})
+const entrySchema = new mongoose.Schema({
+  day: {
+    type: Number,
+    required: true,
+  },
+  value: {
+    type: String,
+    required: true,
+  },
+});
 
-const habit = new mongoose.Schema({
-    name: String,
-    // info: {
-    //     settings: {
-    //         title: String,
-    //         type: String,
-    //         colour: String,
-    //     },
-    //     entries: [entry]
-    // }
-})
+const settingsSchema = new mongoose.Schema({
+  title: {
+    type: String,
+    required: true,
+  },
+  type: {
+    type: String,
+    required: true,
+  },
+  unitType: {
+    type: String,
+    default: "",
+  },
+  colour: {
+    type: String,
+    required: true,
+  },
+  streak: {
+    type: Number,
+    default: 0,
+  },
+});
+
+const habitSchema = new mongoose.Schema({
+  settings: {
+    type: settingsSchema,
+    required: true,
+  },
+  entries: {
+    type: [entrySchema],
+    required: true,
+  },
+});
 
 const dataSchema = new mongoose.Schema({
-    // habits: [habit]
-    name: {
-        type: String,
-        required: true
-    }
-})
+  habits: {
+    type: [habitSchema],
+    required: true,
+  },
+});
 
-module.exports = mongoose.model('UserData', dataSchema)
+module.exports = mongoose.model("UserData", dataSchema);
