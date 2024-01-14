@@ -41,7 +41,7 @@ const habitSchema = new mongoose.Schema({
   },
   entries: {
     type: [entrySchema],
-    required: true,
+    default: [],
   },
 });
 
