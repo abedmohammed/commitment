@@ -127,8 +127,12 @@ const CommitChart = ({
             {[...Array(1)].map(() => (
               <li></li>
             ))}
-            {setGraphArray().map((val) => {
-              const num = Math.random().toFixed(2);
+            {setGraphArray().map((val, i) => {
+              let num = Math.random().toFixed(2);
+
+              if (i > 200) {
+                num = 0;
+              }
 
               return (
                 <li className="chart__squares--active">
