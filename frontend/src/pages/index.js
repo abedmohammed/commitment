@@ -18,8 +18,16 @@ export default function Home() {
     setLoading(isLoading);
   };
 
-  const updateHabits = (data) => {
+  const addHabit = (data) => {
     setHabits((prev) => [...prev, data]);
+  };
+
+  const updateHabits = (data) => {
+    setHabits((prev) => {
+      const index = prev.findIndex((item) => item._id === data._id);
+      prev[index] = data;
+      return [...prev];
+    });
   };
 
   const deleteHabit = (id) => {
@@ -79,6 +87,7 @@ export default function Home() {
                     type={habit.settings.type}
                     data={habit.entries}
                     deleteHabit={deleteHabit}
+                    updateHabits={updateHabits}
                   />
                 );
               })}
@@ -111,10 +120,7 @@ export default function Home() {
           onCancel={closeCreateHandler}
           title="Create A New Habit"
         >
-          <CreateHabit
-            closeHandler={closeCreateHandler}
-            updateHabits={updateHabits}
-          />
+          <CreateHabit closeHandler={closeCreateHandler} addHabit={addHabit} />
         </Modal>
       </main>
     </>

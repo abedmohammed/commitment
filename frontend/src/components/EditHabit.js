@@ -10,6 +10,7 @@ const EditHabit = ({
   initialColor,
   id,
   deleteHabit,
+  updateHabits,
 }) => {
   const [color, setColor] = useState(initialColor);
   const [showPicker, setShowPicker] = useState(false);
@@ -24,13 +25,28 @@ const EditHabit = ({
     setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
   };
 
-  const handleEdit = (event) => {
+  const handleEdit = async (event) => {
     event.preventDefault();
     if (!formData.title) {
       return;
     }
 
     console.log(formData);
+
+    const data = await fetch(`http://localhost:5000/habits/${id}`, {
+      method: "PATCH",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        title: formData.title,
+        colour: color,
+      }),
+    }).then((res) => res.json());
+
+    updateHabits(data);
+
     closeHandler();
   };
 

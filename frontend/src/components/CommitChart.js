@@ -13,6 +13,7 @@ const CommitChart = ({
   colour,
   id,
   deleteHabit,
+  updateHabits,
 }) => {
   const [showEdit, setShowEdit] = useState(false);
   const openEditHandler = () => setShowEdit(true);
@@ -35,6 +36,7 @@ const CommitChart = ({
           initialType={type}
           initialColor={colour}
           deleteHabit={deleteHabit}
+          updateHabits={updateHabits}
         />
       </Modal>
       <Modal
