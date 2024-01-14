@@ -27,4 +27,24 @@
     border-right: 1px var(--color-background-light-3) solid;
     padding: 0 rem(20px);
   }
+
+  &__stats {
+    display: flex;
+    align-items: center;
+    gap: rem(30px);
+    padding: 0 rem(20px);
+  }
+
+  &__stat {
+    display: flex;
+    gap: rem(5px);
+  }
+
+  &__stat-label {
+    font-weight: 200;
+  }
+
+  &__stat-value {
+    font-weight: 500;
+  }
 }

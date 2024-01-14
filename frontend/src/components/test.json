@@ -1,22 +1,22 @@
 {
-    "data": {
-        "habits":{
-            "gym": {
+    "data": [ {
 
                 "settings": {
                     "title": "Gym 🦾",
-                    "type": "bool"
+                    "type": "bool",
+                    "streak": 5
                 },
                 
                 "entries": {
                     "15": true
                 }
             },
-            "hoursworked": {
+            {
 
                 "settings": {
                     "title": "Hours Worked ⌚",
-                    "type": "number"
+                    "type": "number",
+                    "streak": 5
                 },
                 
                 "entries": {
@@ -30,6 +30,5 @@
                 }
             }
 
-        }
-    }
+    ]
 }
