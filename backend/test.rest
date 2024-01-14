@@ -13,7 +13,7 @@ content-type: application/json
   "settings": {
     "title": "Gym 🦾",
     "type": "bool",
-    "colour": "fff473"
+    "colour": "#fff473"
   },
   "entries": [
     {
@@ -28,13 +28,13 @@ content-type: application/json
 }
 
 ###
-DELETE http://localhost:5000/habits/65a39eece622409143fbe75e
+DELETE http://localhost:5000/habits/65a39ea0e622409143fbe756
 
 ###
-PATCH http://localhost:5000/habits/update
+PATCH http://localhost:5000/habits/65a3a832aeab467e224eeac2
 content-type: application/json
 
 {
-    "title": "Gym 🦾",
-    "colour": "testChange"
+    "title": "Gym changed 🦾",
+    "colour": "#DA6F58"
 }
