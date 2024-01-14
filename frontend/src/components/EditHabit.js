@@ -8,6 +8,9 @@ const EditHabit = ({
   initialUnittype,
   initialType,
   initialColor,
+  id,
+  deleteHabit,
+  updateHabits,
 }) => {
   const [color, setColor] = useState(initialColor);
   const [showPicker, setShowPicker] = useState(false);
@@ -22,13 +25,35 @@ const EditHabit = ({
     setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
   };
 
-  const handleEdit = (event) => {
+  const handleEdit = async (event) => {
     event.preventDefault();
     if (!formData.title) {
       return;
     }
 
     console.log(formData);
+
+    const data = await fetch(`http://localhost:5000/habits/${id}`, {
+      method: "PATCH",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        title: formData.title,
+        colour: color,
+      }),
+    }).then((res) => res.json());
+
+    updateHabits(data);
+
+    closeHandler();
+  };
+
+  const deleteHandler = async (e) => {
+    e.preventDefault();
+    await fetch(`http://localhost:5000/habits/${id}`, { method: "DELETE" });
+    deleteHabit(id);
     closeHandler();
   };
 
@@ -101,7 +126,15 @@ const EditHabit = ({
           )}
         </button>
       </div>
-      <Button type="submit" text="Edit" classes="form__button" />
+      <div className="form__buttons">
+        <Button type="submit" text="Edit" classes="form__button" />
+        <Button
+          type="button"
+          clickHandler={deleteHandler}
+          text="Delete"
+          classes="form__button button--delete"
+        />
+      </div>
     </form>
   );
 };

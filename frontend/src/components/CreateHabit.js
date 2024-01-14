@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { HexColorPicker } from "react-colorful";
 import Button from "./Button";
 
-const CreateHabit = ({ closeHandler }) => {
+const CreateHabit = ({ closeHandler, addHabit }) => {
   const [color, setColor] = useState("#20d400");
   const [showPicker, setShowPicker] = useState(false);
   const [formData, setFormData] = useState({
@@ -16,7 +16,7 @@ const CreateHabit = ({ closeHandler }) => {
     setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     if (!formData.title) {
       return;
@@ -24,7 +24,7 @@ const CreateHabit = ({ closeHandler }) => {
 
     console.log(formData);
 
-    fetch("http://localhost:5000/habits", {
+    const data = await fetch("http://localhost:5000/habits", {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -38,7 +38,11 @@ const CreateHabit = ({ closeHandler }) => {
           colour: color,
         },
       }),
-    });
+    }).then((res) => res.json());
+
+    addHabit(data);
+
+    console.log(data);
 
     closeHandler();
   };
