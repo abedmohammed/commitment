@@ -6,102 +6,28 @@ POST http://localhost:5000/habits
 content-type: application/json
 
 {
-  "habits": [
+  "settings": {
+    "title": "Gym 🦾",
+    "type": "bool",
+    "colour": "fff473"
+  },
+  "entries": [
     {
-      "settings": {
-        "title": "Gym 🦾",
-        "type": "bool",
-        "colour": "fff473"
-      },
-      "entries": [
-        {
-            "day": 1,
-            "value": "1"
-        },
-        {
-            "day": 1,
-            "value": "1"
-        }
-      ]
+      "day": 1,
+      "value": "1"
     },
     {
-      "settings": {
-        "title": "Gym 🦾",
-        "type": "bool",
-        "colour": "fff473"
-      },
-      "entries": [
-        {
-            "day": 1,
-            "value": "1"
-        },
-        {
-            "day": 1,
-            "value": "1"
-        }
-      ]
+        "day": 1,
+        "value": "1"
     }
   ]
 }
 
-# {
-#     "habits":
-#     [
-#         {
-#             "name": "gym",
-#             "info": {
-#                 "settings": {
-#                 "title": "Gym 🦾",
-#                 "type": "bool",
-#                 "color": "fff473"
-#                 },
-#                 "entries": [
-#                     {
-#                         "day": 15,
-#                         "value": "true"
-#                     }
-#                 ]
-#             }
-#         },
-#         {
-#             "name": "hoursworked",
-#             "info": {
-#                 "settings": {
-#                 "title": "Hours Worked ⌚",
-#                 "type": "number",
-#                 "color": "fff473"
-#                 },
-#                 "entries": [
-#                     {
-#                         "day": 15,
-#                         "value": "5"
-#                     },
-#                     {
-#                         "day": 16,
-#                         "value": "1"
-#                     },
-#                     {
-#                         "day": 17,
-#                         "value": "2"
-#                     },
-#                     {
-#                         "day": 20,
-#                         "value": "2"
-#                     },
-#                     {
-#                         "day": 22,
-#                         "value": "5"
-#                     },
-#                     {
-#                         "day": 23,
-#                         "value": "8"
-#                     },
-#                     {
-#                         "day": 24,
-#                         "value": "9"
-#                     }
-#                 ]
-#             }
-#         }     
-#     ]
-# }
+###
+PATCH http://localhost:5000/habits/update
+content-type: application/json
+
+{
+    "title": "Gym 🦾",
+    "colour": "testChange"
+}

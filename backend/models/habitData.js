@@ -45,11 +45,5 @@ const habitSchema = new mongoose.Schema({
   },
 });
 
-const dataSchema = new mongoose.Schema({
-  habits: {
-    type: [habitSchema],
-    required: true,
-  },
-});
 
-module.exports = mongoose.model("HabitData", dataSchema);
+module.exports = mongoose.model("HabitData", habitSchema);
