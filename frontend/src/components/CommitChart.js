@@ -5,7 +5,15 @@ import EditHabit from "@/components/EditHabit";
 import Modal from "./Modal";
 import AddEntry from "./AddEntry";
 
-const CommitChart = ({ title, unitType, type, data, colour, id }) => {
+const CommitChart = ({
+  title,
+  unitType,
+  type,
+  data,
+  colour,
+  id,
+  deleteHabit,
+}) => {
   const [showEdit, setShowEdit] = useState(false);
   const openEditHandler = () => setShowEdit(true);
   const closeEditHandler = () => setShowEdit(false);
@@ -20,11 +28,13 @@ const CommitChart = ({ title, unitType, type, data, colour, id }) => {
     <>
       <Modal show={showEdit} onCancel={closeEditHandler} title="Edit Habit">
         <EditHabit
+          id={id}
           closeHandler={closeEditHandler}
           initialTitle={title}
           initialUnittype={unitType}
           initialType={type}
           initialColor={colour}
+          deleteHabit={deleteHabit}
         />
       </Modal>
       <Modal
@@ -33,6 +43,7 @@ const CommitChart = ({ title, unitType, type, data, colour, id }) => {
         title="Add Entry"
       >
         <AddEntry
+          id={id}
           closeHandler={closeAddEntryHandler}
           initialTitle={title}
           initialUnittype={unitType}

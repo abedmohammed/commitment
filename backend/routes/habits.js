@@ -34,9 +34,19 @@ router.post('/', async (req, res) => {
 });
 
 // update a habit
-router.patch('/:id', async (req, res) => {
+router.patch('/:id', getHabit, async (req, res) => {
+  if (req.body.title != null) {
+    res.habit.settings.title = req.body.title    
+  }
+  if (req.body.unitType != null) {
+    res.habit.settings.unitType = req.body.unitType
+  }
+  if (req.body.colour != null) {
+    res.habit.settings.colour = req.body.colour
+  }
   try {
-
+    const updatedHabit = await res.habit.save()
+    res.json(updatedHabit)
   } catch (err) {
     res.status(500).json({ message: err.message })
   }
@@ -48,7 +58,7 @@ router.delete("/:id", getHabit, async (req, res) => {
     await res.habit.deleteOne()
     res.json({ message: 'Deleted habit'})
   } catch (err) {
-    res.status(500).json({ message: err.message })
+    res.status(400).json({ message: err.message })
   }
 });
 

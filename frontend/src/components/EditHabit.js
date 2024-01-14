@@ -8,6 +8,8 @@ const EditHabit = ({
   initialUnittype,
   initialType,
   initialColor,
+  id,
+  deleteHabit,
 }) => {
   const [color, setColor] = useState(initialColor);
   const [showPicker, setShowPicker] = useState(false);
@@ -29,6 +31,13 @@ const EditHabit = ({
     }
 
     console.log(formData);
+    closeHandler();
+  };
+
+  const deleteHandler = async (e) => {
+    e.preventDefault();
+    await fetch(`http://localhost:5000/habits/${id}`, { method: "DELETE" });
+    deleteHabit(id);
     closeHandler();
   };
 
@@ -101,7 +110,15 @@ const EditHabit = ({
           )}
         </button>
       </div>
-      <Button type="submit" text="Edit" classes="form__button" />
+      <div className="form__buttons">
+        <Button type="submit" text="Edit" classes="form__button" />
+        <Button
+          type="button"
+          clickHandler={deleteHandler}
+          text="Delete"
+          classes="form__button button--delete"
+        />
+      </div>
     </form>
   );
 };

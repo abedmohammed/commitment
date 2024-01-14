@@ -9,14 +9,32 @@ import CreateHabit from "@/components/CreateHabit";
 export default function Home() {
   const [showCreate, setShowCreate] = useState(false);
   const [habits, setHabits] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const openCreateHandler = () => setShowCreate(true);
   const closeCreateHandler = () => setShowCreate(false);
 
+  const setLoadingHandler = (isLoading) => {
+    setLoading(isLoading);
+  };
+
+  const updateHabits = (data) => {
+    setHabits((prev) => [...prev, data]);
+  };
+
+  const deleteHabit = (id) => {
+    setHabits((prev) => {
+      return prev.filter((item) => item._id !== id);
+    });
+  };
+
   useEffect(() => {
     fetch("http://localhost:5000/habits")
       .then((res) => res.json())
-      .then((json) => setHabits(json));
+      .then((json) => {
+        setLoadingHandler(false);
+        return setHabits(json);
+      });
   }, []);
 
   console.log(habits);
@@ -47,22 +65,24 @@ export default function Home() {
           ></Button>
           <Button text={"Settings"} icon={<FaCog />}></Button>
         </div>
-        <div className="habits">
-          {habits.length > 0 &&
-            habits.map((habit) => {
-              return (
-                <CommitChart
-                  id={habit._id}
-                  key={habit._id}
-                  colour={habit.settings.colour}
-                  title={habit.settings.title}
-                  unitType={habit.settings.unitType}
-                  type={habit.settings.type}
-                  data={habit.entries}
-                />
-              );
-            })}
-          <CommitChart
+        {!loading && (
+          <div className="habits">
+            {habits.length > 0 &&
+              habits.map((habit) => {
+                return (
+                  <CommitChart
+                    id={habit._id}
+                    key={habit._id}
+                    colour={habit.settings.colour}
+                    title={habit.settings.title}
+                    unitType={habit.settings.unitType}
+                    type={habit.settings.type}
+                    data={habit.entries}
+                    deleteHabit={deleteHabit}
+                  />
+                );
+              })}
+            {/* <CommitChart
             colour="#603FEF"
             title="Hours Worked ⌛⌛"
             unitType="Hours"
@@ -82,14 +102,19 @@ export default function Home() {
             unitType=""
             type="boolean"
             data={[]}
-          />
-        </div>
+          /> */}
+          </div>
+        )}
+
         <Modal
           show={showCreate}
           onCancel={closeCreateHandler}
           title="Create A New Habit"
         >
-          <CreateHabit closeHandler={closeCreateHandler} />
+          <CreateHabit
+            closeHandler={closeCreateHandler}
+            updateHabits={updateHabits}
+          />
         </Modal>
       </main>
     </>
