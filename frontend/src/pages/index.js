@@ -10,9 +10,14 @@ export default function Home() {
   const [showCreate, setShowCreate] = useState(false);
   const [habits, setHabits] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [currDay, setCurrDay] = useState(13);
 
   const openCreateHandler = () => setShowCreate(true);
   const closeCreateHandler = () => setShowCreate(false);
+
+  const updateDay = (day) => {
+    setCurrDay(day);
+  };
 
   const setLoadingHandler = (isLoading) => {
     setLoading(isLoading);
@@ -72,6 +77,16 @@ export default function Home() {
             icon={<FaPlus />}
           ></Button>
           <Button text={"Settings"} icon={<FaCog />}></Button>
+          <input
+            type="number"
+            className="form__input"
+            value={currDay}
+            onChange={(event) => {
+              const { value } = event.target;
+
+              setCurrDay(value);
+            }}
+          />
         </div>
         {!loading && (
           <div className="habits">
@@ -85,9 +100,12 @@ export default function Home() {
                     title={habit.settings.title}
                     unitType={habit.settings.unitType}
                     type={habit.settings.type}
+                    streak={habit.settings.streak}
+                    average={habit.settings.average}
                     data={habit.entries}
                     deleteHabit={deleteHabit}
                     updateHabits={updateHabits}
+                    currDay={currDay}
                   />
                 );
               })}

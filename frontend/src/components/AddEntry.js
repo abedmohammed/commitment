@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import Button from "./Button";
 
-const AddEntry = ({ closeHandler, initialTitle, initialUnittype }) => {
+const AddEntry = ({
+  closeHandler,
+  initialTitle,
+  initialUnittype,
+  completeTaskHandler,
+}) => {
   const [formData, setFormData] = useState({
     value: 0,
   });
@@ -16,8 +21,7 @@ const AddEntry = ({ closeHandler, initialTitle, initialUnittype }) => {
     if (formData.value === "") {
       return;
     }
-
-    console.log(formData);
+    completeTaskHandler(formData.value);
     closeHandler();
   };
 
