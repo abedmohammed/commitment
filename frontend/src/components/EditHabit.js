@@ -31,8 +31,6 @@ const EditHabit = ({
       return;
     }
 
-    console.log(formData);
-
     const data = await fetch(`http://localhost:5000/habits/${id}`, {
       method: "PATCH",
       headers: {
@@ -41,6 +39,7 @@ const EditHabit = ({
       },
       body: JSON.stringify({
         title: formData.title,
+        unitType: formData.unittype,
         colour: color,
       }),
     }).then((res) => res.json());

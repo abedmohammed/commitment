@@ -15,10 +15,6 @@ export default function Home() {
   const openCreateHandler = () => setShowCreate(true);
   const closeCreateHandler = () => setShowCreate(false);
 
-  const updateDay = (day) => {
-    setCurrDay(day);
-  };
-
   const setLoadingHandler = (isLoading) => {
     setLoading(isLoading);
   };
@@ -50,8 +46,6 @@ export default function Home() {
       });
   }, []);
 
-  console.log(habits);
-
   return (
     <>
       <Head>
@@ -79,7 +73,7 @@ export default function Home() {
           <Button text={"Settings"} icon={<FaCog />}></Button>
           <input
             type="number"
-            className="form__input"
+            className="form__text-input"
             value={currDay}
             onChange={(event) => {
               const { value } = event.target;
