@@ -30,10 +30,10 @@ content-type: application/json
 }
 
 ###
-PATCH http://localhost:5000/habits/65a3b8e427d56984ee8ab333/addEntry
+PATCH http://localhost:5000/habits/65a3ece18ee359573db32a55/addEntry
 content-type: application/json
 
 {
-  "day": 4,
-  "value": "8"
+  "day": 12,
+  "value": "5"
 }
