@@ -1,7 +1,7 @@
 import CommitChart from "@/components/CommitChart";
 import Head from "next/head";
 import Modal from "../components/Modal";
-import { FaPlus } from "react-icons/fa";
+import { FaCog, FaPlus } from "react-icons/fa";
 import Button from "@/components/Button";
 import { useState } from "react";
 import CreateHabit from "@/components/CreateHabit";
@@ -36,17 +36,37 @@ export default function Home() {
             text={"Create New Habit"}
             icon={<FaPlus />}
           ></Button>
+          <Button text={"Settings"} icon={<FaCog />}></Button>
         </div>
         <div className="habits">
-          <CommitChart colour="#603FEF" title="Hours ⌛⌛" />
-          <CommitChart colour="green" title="Leetcode 🧩" />
+          <CommitChart
+            colour="#603FEF"
+            title="Hours Worked ⌛⌛"
+            unitType="Hours"
+            type="number"
+            data={[]}
+          />
+          <CommitChart
+            colour="green"
+            title="Leetcode 🧩"
+            unitType="questions"
+            type="number"
+            data={[]}
+          />
+          <CommitChart
+            colour="teal"
+            title="Gym 🦾"
+            unitType=""
+            type="boolean"
+            data={[]}
+          />
         </div>
         <Modal
           show={showCreate}
           onCancel={closeCreateHandler}
           title="Create A New Habit"
         >
-          <CreateHabit />
+          <CreateHabit closeHandler={closeCreateHandler} />
         </Modal>
       </main>
     </>

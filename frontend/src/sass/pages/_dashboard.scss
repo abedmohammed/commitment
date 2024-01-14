@@ -3,5 +3,7 @@
 .dashboard {
   &__options {
     margin-top: rem(30px);
+    display: flex;
+    gap: rem(20px);
   }
 }

@@ -2,13 +2,19 @@ import React, { useState } from "react";
 import { HexColorPicker } from "react-colorful";
 import Button from "./Button";
 
-const CreateHabit = ({ closeHandler }) => {
-  const [color, setColor] = useState("#20d400");
+const EditHabit = ({
+  closeHandler,
+  initialTitle,
+  initialUnittype,
+  initialType,
+  initialColor,
+}) => {
+  const [color, setColor] = useState(initialColor);
   const [showPicker, setShowPicker] = useState(false);
   const [formData, setFormData] = useState({
-    title: "",
-    unittype: "",
-    type: "number",
+    title: initialTitle,
+    unittype: initialUnittype || "",
+    type: initialType,
   });
 
   const handleChange = (event) => {
@@ -16,7 +22,7 @@ const CreateHabit = ({ closeHandler }) => {
     setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
   };
 
-  const handleSubmit = (event) => {
+  const handleEdit = (event) => {
     event.preventDefault();
     if (!formData.title) {
       return;
@@ -27,7 +33,7 @@ const CreateHabit = ({ closeHandler }) => {
   };
 
   return (
-    <form className="form" onSubmit={handleSubmit}>
+    <form className="form" onSubmit={handleEdit}>
       <div className="form__input">
         <label htmlFor="title" className="form__label">
           Habit Name:
@@ -41,22 +47,6 @@ const CreateHabit = ({ closeHandler }) => {
           value={formData.title}
           onChange={handleChange}
         />
-      </div>
-
-      <div className="form__input form__input--inline">
-        <label className="form__label" htmlFor="type">
-          Habit Type:
-        </label>
-
-        <select
-          className="form__select"
-          value={formData.type}
-          onChange={handleChange}
-          name="type"
-        >
-          <option value="number">Number</option>
-          <option value="boolean">Boolean</option>
-        </select>
       </div>
 
       {formData.type === "number" && (
@@ -111,9 +101,9 @@ const CreateHabit = ({ closeHandler }) => {
           )}
         </button>
       </div>
-      <Button type="submit" text="Create" classes="form__button" />
+      <Button type="submit" text="Edit" classes="form__button" />
     </form>
   );
 };
 
-export default CreateHabit;
+export default EditHabit;
