@@ -4,9 +4,10 @@ import Modal from "../components/Modal";
 import { FaPlus } from "react-icons/fa";
 import Button from "@/components/Button";
 import { useState } from "react";
+import CreateHabit from "@/components/CreateHabit";
 
 export default function Home() {
-  const [showCreate, setShowCreate] = useState(true);
+  const [showCreate, setShowCreate] = useState(false);
 
   const openCreateHandler = () => setShowCreate(true);
   const closeCreateHandler = () => setShowCreate(false);
@@ -44,7 +45,9 @@ export default function Home() {
           show={showCreate}
           onCancel={closeCreateHandler}
           title="Create A New Habit"
-        ></Modal>
+        >
+          <CreateHabit />
+        </Modal>
       </main>
     </>
   );
