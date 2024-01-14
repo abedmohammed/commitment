@@ -2,6 +2,10 @@ GET http://localhost:5000/habits
 
 
 ###
+GET http://localhost:5000/habits/65a39eece622409143fbe75e
+
+
+###
 POST http://localhost:5000/habits
 content-type: application/json
 
@@ -22,6 +26,9 @@ content-type: application/json
     }
   ]
 }
+
+###
+DELETE http://localhost:5000/habits/65a39eece622409143fbe75e
 
 ###
 PATCH http://localhost:5000/habits/update
