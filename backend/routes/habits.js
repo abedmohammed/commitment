@@ -1,41 +1,36 @@
 const express = require("express");
 const router = express.Router();
-const UserData = require("../models/data");
+const HabitData = require("../models/data");
 
 // get all
 router.get("/", async (req, res) => {
   try {
-    const users = await UserData.find();
-    res.json(users);
+    const habits = await HabitData.find();
+    res.json(habits);
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
 });
 
-// get one
-router.get("/:id", (req, res) => {
-  res.send(req.params.id);
-});
-
 // create one
 router.post("/", async (req, res) => {
   console.log(req.body);
-  const user = new UserData({
+  const habit = new HabitData({
     habits: req.body.habits,
   });
 
   try {
-    const newUser = await user.save();
-    res.status(201).json(newUser);
+    const newHabit = await habit.save();
+    res.status(201).json(newHabit);
   } catch (err) {
     res.status(400).json({ message: err.message });
   }
 });
 
 // update one
-router.patch("/", (req, res) => {});
+router.patch("/:id", (req, res) => {});
 
 // delete one
-router.delete("/", (req, res) => {});
+router.delete("/:id", (req, res) => {});
 
 module.exports = router;

@@ -52,4 +52,4 @@ const dataSchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model("UserData", dataSchema);
+module.exports = mongoose.model("HabitData", dataSchema);
