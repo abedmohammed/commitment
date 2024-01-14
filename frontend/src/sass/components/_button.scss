@@ -16,6 +16,11 @@
     border: 1px var(--color-background-light-3) solid;
   }
 
+  &--delete {
+    color: red;
+    border: 1px red solid;
+  }
+
   &:hover {
     transform: translateY(-3px);
     background: var(--color-background-light-2);

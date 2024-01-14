@@ -85,8 +85,13 @@ input::-webkit-inner-spin-button {
     cursor: default;
   }
 
+  &__buttons {
+    align-self: flex-end;
+    display: flex;
+    gap: rem(10px);
+  }
+
   &__button {
     // margin-top: rem(20px);
-    align-self: flex-end;
   }
 }
