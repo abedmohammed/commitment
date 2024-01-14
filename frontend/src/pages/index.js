@@ -72,7 +72,7 @@ export default function Home() {
       </Head>
       <Header />
       <main className="dashboard">
-        <h1 className="dashboard__title">Welcome Back, Michael</h1>
+        <h1 className="dashboard__title">Welcome Back, Jane Dough</h1>
         <div className="dashboard__options">
           <Button
             clickHandler={openCreateHandler}

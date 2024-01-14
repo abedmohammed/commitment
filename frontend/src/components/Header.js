@@ -11,9 +11,9 @@ const Header = () => {
         <Link href="/" className="header__link">
           Dashboard
         </Link>
-        <Link href="/profile" className="header__link">
+        {/* <Link href="/profile" className="header__link">
           Profile
-        </Link>
+        </Link> */}
         <Link href="/docs" className="header__link">
           API Docs
         </Link>
