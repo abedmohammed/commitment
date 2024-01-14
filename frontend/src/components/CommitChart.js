@@ -5,7 +5,7 @@ import EditHabit from "@/components/EditHabit";
 import Modal from "./Modal";
 import AddEntry from "./AddEntry";
 
-const CommitChart = ({ title, unitType, type, data, colour }) => {
+const CommitChart = ({ title, unitType, type, data, colour, id }) => {
   const [showEdit, setShowEdit] = useState(false);
   const openEditHandler = () => setShowEdit(true);
   const closeEditHandler = () => setShowEdit(false);
