@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { HexColorPicker } from "react-colorful";
 import Button from "./Button";
 
-const CreateHabit = ({ closeHandler, updateHabits }) => {
+const CreateHabit = ({ closeHandler, addHabit }) => {
   const [color, setColor] = useState("#20d400");
   const [showPicker, setShowPicker] = useState(false);
   const [formData, setFormData] = useState({
@@ -40,7 +40,7 @@ const CreateHabit = ({ closeHandler, updateHabits }) => {
       }),
     }).then((res) => res.json());
 
-    updateHabits(data);
+    addHabit(data);
 
     console.log(data);
 
