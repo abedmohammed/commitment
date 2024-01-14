@@ -12,6 +12,12 @@ router.get('/', async (req, res) => {
   }
 });
 
+// get one habit
+router.get('/:id', getHabit, async (req, res) => {
+  res.send(res.habit)
+});
+
+
 // create a habit
 router.post('/', async (req, res) => {
   const habit = new HabitData({
@@ -37,23 +43,31 @@ router.patch('/:id', async (req, res) => {
 });
 
 // delete a habit
-router.delete("/:id", (req, res) => {});
+router.delete("/:id", getHabit, async (req, res) => {
+  try {
+    await res.habit.deleteOne()
+    res.json({ message: 'Deleted habit'})
+  } catch (err) {
+    res.status(500).json({ message: err.message })
+  }
+});
 
 // add an entry
 router.patch("/:id/addEntry", (req, res) => {})
 
 async function getHabit(req, res, next) {
+  let habit
   try {
-    data = await HabitData.find()
-    let habits = data[0].habits
-    for (let i = 0; i < habits.length; i++) {
-     if (input_title == habits[i].settings.title) {
-        
-      }
+    habit = await HabitData.findById(req.params.id)
+    if (habit == null) {
+      return res.status(404).json({ message: "Cannot find habit" })
     }
-  } catch {
-    return null
+  } catch (err) {
+    return res.status(500).json({ message: err.message })
   }
+
+  res.habit = habit
+  next()
 }
 
 module.exports = router;
