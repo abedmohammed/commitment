@@ -14,6 +14,9 @@ const CommitChart = ({
   id,
   deleteHabit,
   updateHabits,
+  streak,
+  average,
+  currDay,
 }) => {
   const [showEdit, setShowEdit] = useState(false);
   const openEditHandler = () => setShowEdit(true);
@@ -23,7 +26,44 @@ const CommitChart = ({
   const openAddEntryHandler = () => setShowAddEntry(true);
   const closeAddEntryHandler = () => setShowAddEntry(false);
 
-  const completeTaskHandler = () => {};
+  const dayOfYear = (date) => {
+    const start = new Date(date.getFullYear(), 0, 1); // January 1st of the given year
+    const diff = date - start; // Difference in milliseconds
+    const oneDay = 1000 * 60 * 60 * 24; // Milliseconds in one day
+    return Math.floor(diff / oneDay);
+  };
+
+  const completeTaskHandler = async (value) => {
+    const data = await fetch(`http://localhost:5000/habits/${id}/addEntry`, {
+      method: "PATCH",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        day: currDay,
+        value: value,
+      }),
+    }).then((res) => res.json());
+
+    updateHabits(data);
+  };
+
+  const setGraphArray = () => {
+    const arr = Array(366).fill(0);
+
+    data.forEach((entry) => {
+      const { day, value } = entry;
+      console.log(entry);
+      if (type === "number") {
+        arr[day] = Number(value) / (average + Number(value));
+      } else {
+        arr[day] = 1;
+      }
+    });
+
+    return arr;
+  };
 
   return (
     <>
@@ -51,6 +91,7 @@ const CommitChart = ({
           initialUnittype={unitType}
           initialType={type}
           initialColor={colour}
+          completeTaskHandler={completeTaskHandler}
         />
       </Modal>
       <div className="habit">
@@ -83,13 +124,13 @@ const CommitChart = ({
             {[...Array(1)].map(() => (
               <li></li>
             ))}
-            {[...Array(366)].map(() => {
+            {setGraphArray().map((val) => {
               const num = Math.random().toFixed(2);
 
               return (
                 <li className="chart__squares--active">
                   <div
-                    style={{ backgroundColor: `${colour}`, opacity: `${num}` }}
+                    style={{ backgroundColor: `${colour}`, opacity: `${val}` }}
                   ></div>
                 </li>
               );
@@ -103,7 +144,11 @@ const CommitChart = ({
               icon={<FaRegCheckSquare />}
               text={type === "number" ? "Add Entry" : "Complete Today"}
               clickHandler={
-                type === "number" ? openAddEntryHandler : completeTaskHandler
+                type === "number"
+                  ? openAddEntryHandler
+                  : () => {
+                      completeTaskHandler(1);
+                    }
               }
             />
             <Button
@@ -116,12 +161,16 @@ const CommitChart = ({
           <div className="habit__stats">
             <div className="habit__stat">
               <p className="habit__stat-label">Streak: </p>
-              <p className="habit__stat-value">8 {unitType}</p>
+              <p className="habit__stat-value">
+                {streak} {unitType}
+              </p>
             </div>
             {type === "number" && (
               <div className="habit__stat">
                 <p className="habit__stat-label">Average: </p>
-                <p className="habit__stat-value">8 {unitType}</p>
+                <p className="habit__stat-value">
+                  {average} {unitType}
+                </p>
               </div>
             )}
           </div>
