@@ -16,7 +16,7 @@ const docs = () => {
         day: DAY,
         value: VALUE,
       }),
-    }).then((res) => res.json());`;
+      }).then((res) => res.json());`;
 
   return (
     <>
@@ -41,6 +41,8 @@ const docs = () => {
           quality={100}
         />
 
+        <h2 className="docs__subtitle">Get Data</h2>
+
         <h2 className="docs__subtitle">Submit Entry</h2>
         <p className="docs__paragraph">
           You can use the public PATCH call to submit your own habit commits
@@ -56,8 +58,6 @@ const docs = () => {
             wrapLines
           />
         </div>
-
-        <h2 className="docs__subtitle">Submit Entry</h2>
       </main>
     </>
   );
