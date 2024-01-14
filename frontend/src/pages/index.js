@@ -7,8 +7,8 @@ import { useEffect, useState } from "react";
 import CreateHabit from "@/components/CreateHabit";
 import ApiMenu from "@/components/ApiMenu";
 
-import logo from "../../public/images/logo.png";
-import Image from "next/image";
+import { Grid, RotatingLines } from "react-loader-spinner";
+import Header from "@/components/Header";
 
 export default function Home() {
   const [showCreate, setShowCreate] = useState(false);
@@ -70,10 +70,7 @@ export default function Home() {
 
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <header className="header">
-        <Image src={logo} width={181} height={58} alt="Picture of the author" />
-        <div className="header__links"></div>
-      </header>
+      <Header />
       <main className="dashboard">
         <h1 className="dashboard__title">Welcome Back, Michael</h1>
         <div className="dashboard__options">
@@ -98,7 +95,7 @@ export default function Home() {
             }}
           /> */}
         </div>
-        {!loading && (
+        {!loading ? (
           <div className="habits">
             {habits.length > 0 &&
               habits.map((habit) => {
@@ -119,6 +116,20 @@ export default function Home() {
                   />
                 );
               })}
+          </div>
+        ) : (
+          <div className="loading">
+            <RotatingLines
+              visible={true}
+              height="46"
+              width="46"
+              color="grey"
+              strokeWidth="5"
+              animationDuration="0.75"
+              ariaLabel="rotating-lines-loading"
+              wrapperStyle={{}}
+              wrapperClass=""
+            />
           </div>
         )}
 
