@@ -18,6 +18,9 @@ Start by clicking the 'Create New Habit' button at the top. Fill in the habits n
 
 ![Alt text](imgs/image-2.png)
 
+You can then add in yoour daily enteries to your specific habits by clicking the 'Add Entry' button and filling in the value. 
+
+![Alt text](imgs/image-3.png)
 
 
 
