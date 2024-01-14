@@ -23,6 +23,23 @@ const CreateHabit = ({ closeHandler }) => {
     }
 
     console.log(formData);
+
+    fetch("http://localhost:5000/habits", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        settings: {
+          title: formData.title,
+          type: formData.type,
+          unitType: formData.unittype,
+          colour: color,
+        },
+      }),
+    });
+
     closeHandler();
   };
 

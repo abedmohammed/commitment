@@ -3,14 +3,23 @@ import Head from "next/head";
 import Modal from "../components/Modal";
 import { FaCog, FaPlus } from "react-icons/fa";
 import Button from "@/components/Button";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CreateHabit from "@/components/CreateHabit";
 
 export default function Home() {
   const [showCreate, setShowCreate] = useState(false);
+  const [habits, setHabits] = useState([]);
 
   const openCreateHandler = () => setShowCreate(true);
   const closeCreateHandler = () => setShowCreate(false);
+
+  useEffect(() => {
+    fetch("http://localhost:5000/habits")
+      .then((res) => res.json())
+      .then((json) => setHabits(json));
+  }, []);
+
+  console.log(habits);
 
   return (
     <>
@@ -39,6 +48,20 @@ export default function Home() {
           <Button text={"Settings"} icon={<FaCog />}></Button>
         </div>
         <div className="habits">
+          {habits.length > 0 &&
+            habits.map((habit) => {
+              return (
+                <CommitChart
+                  id={habit._id}
+                  key={habit._id}
+                  colour={habit.settings.colour}
+                  title={habit.settings.title}
+                  unitType={habit.settings.unitType}
+                  type={habit.settings.type}
+                  data={habit.entries}
+                />
+              );
+            })}
           <CommitChart
             colour="#603FEF"
             title="Hours Worked ⌛⌛"
