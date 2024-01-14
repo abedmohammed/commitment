@@ -33,6 +33,10 @@ const CommitChart = ({
     return Math.floor(diff / oneDay);
   };
 
+  if (data.at(-1)?.day < dayOfYear(new Date()) - 1) {
+    streak = 0;
+  }
+
   const completeTaskHandler = async (value) => {
     const data = await fetch(`http://localhost:5000/habits/${id}/addEntry`, {
       method: "PATCH",
@@ -54,7 +58,6 @@ const CommitChart = ({
 
     data.forEach((entry) => {
       const { day, value } = entry;
-      console.log(entry);
       if (type === "number") {
         arr[day] = Number(value) / (average + Number(value));
       } else {
@@ -162,14 +165,14 @@ const CommitChart = ({
             <div className="habit__stat">
               <p className="habit__stat-label">Streak: </p>
               <p className="habit__stat-value">
-                {streak} {unitType}
+                {streak} day{streak !== 1 ? "s" : ""}
               </p>
             </div>
             {type === "number" && (
               <div className="habit__stat">
                 <p className="habit__stat-label">Average: </p>
                 <p className="habit__stat-value">
-                  {average} {unitType}
+                  {average.toFixed(2)} {unitType}
                 </p>
               </div>
             )}

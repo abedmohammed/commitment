@@ -22,8 +22,6 @@ const CreateHabit = ({ closeHandler, addHabit }) => {
       return;
     }
 
-    console.log(formData);
-
     const data = await fetch("http://localhost:5000/habits", {
       method: "POST",
       headers: {
@@ -41,8 +39,6 @@ const CreateHabit = ({ closeHandler, addHabit }) => {
     }).then((res) => res.json());
 
     addHabit(data);
-
-    console.log(data);
 
     closeHandler();
   };
