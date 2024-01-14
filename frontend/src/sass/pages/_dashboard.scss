@@ -1,5 +1,9 @@
 @use "../abstracts/" as *;
 
+.header {
+  margin-bottom: rem(40px);
+}
+
 .dashboard {
   &__options {
     width: 1000px;

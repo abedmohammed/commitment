@@ -7,6 +7,9 @@ import { useEffect, useState } from "react";
 import CreateHabit from "@/components/CreateHabit";
 import ApiMenu from "@/components/ApiMenu";
 
+import logo from "../../public/images/logo.png";
+import Image from "next/image";
+
 export default function Home() {
   const [showCreate, setShowCreate] = useState(false);
   const [showAPI, setShowAPI] = useState(false);
@@ -67,6 +70,10 @@ export default function Home() {
 
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <header className="header">
+        <Image src={logo} width={181} height={58} alt="Picture of the author" />
+        <div className="header__links"></div>
+      </header>
       <main className="dashboard">
         <h1 className="dashboard__title">Welcome Back, Michael</h1>
         <div className="dashboard__options">
@@ -112,27 +119,6 @@ export default function Home() {
                   />
                 );
               })}
-            {/* <CommitChart
-            colour="#603FEF"
-            title="Hours Worked ⌛⌛"
-            unitType="Hours"
-            type="number"
-            data={[]}
-          />
-          <CommitChart
-            colour="green"
-            title="Leetcode 🧩"
-            unitType="questions"
-            type="number"
-            data={[]}
-          />
-          <CommitChart
-            colour="teal"
-            title="Gym 🦾"
-            unitType=""
-            type="boolean"
-            data={[]}
-          /> */}
           </div>
         )}
 
