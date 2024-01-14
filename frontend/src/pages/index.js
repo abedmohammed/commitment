@@ -5,15 +5,20 @@ import { FaCog, FaPlus } from "react-icons/fa";
 import Button from "@/components/Button";
 import { useEffect, useState } from "react";
 import CreateHabit from "@/components/CreateHabit";
+import ApiMenu from "@/components/ApiMenu";
 
 export default function Home() {
   const [showCreate, setShowCreate] = useState(false);
+  const [showAPI, setShowAPI] = useState(false);
   const [habits, setHabits] = useState([]);
   const [loading, setLoading] = useState(true);
   const [currDay, setCurrDay] = useState(13);
 
   const openCreateHandler = () => setShowCreate(true);
   const closeCreateHandler = () => setShowCreate(false);
+
+  const openAPIHandler = () => setShowAPI(true);
+  const closeAPIHandler = () => setShowAPI(false);
 
   const setLoadingHandler = (isLoading) => {
     setLoading(isLoading);
@@ -70,8 +75,12 @@ export default function Home() {
             text={"Create New Habit"}
             icon={<FaPlus />}
           ></Button>
-          <Button text={"Settings"} icon={<FaCog />}></Button>
-          <input
+          <Button
+            text={"Settings"}
+            icon={<FaCog />}
+            clickHandler={openAPIHandler}
+          />
+          {/* <input
             type="number"
             className="form__text-input"
             value={currDay}
@@ -80,7 +89,7 @@ export default function Home() {
 
               setCurrDay(value);
             }}
-          />
+          /> */}
         </div>
         {!loading && (
           <div className="habits">
@@ -133,6 +142,9 @@ export default function Home() {
           title="Create A New Habit"
         >
           <CreateHabit closeHandler={closeCreateHandler} addHabit={addHabit} />
+        </Modal>
+        <Modal show={showAPI} onCancel={closeAPIHandler} title="🔑 API Menu">
+          <ApiMenu data={habits} />
         </Modal>
       </main>
     </>
