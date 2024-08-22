@@ -3,7 +3,7 @@
 
 ## About :information_source:
 
-Commit to your personal goals through the familiar github commits tracker interface! Commitment is a fully customizable daily habit tracker web-app that displays your progress as a commits grid. You can add your own habits, stylize them, and start logging your progress everyday.
+Commit to your personal goals through the familiar github commits tracker interface! Commitment is a fully customizable daily habit tracker web-app that displays your progress as a commits grid. You can add your own habits, stylize them, and start logging your progress every day.
 
 ![Alt text](imgs/short-landing-page.png)
 
@@ -18,7 +18,7 @@ Start by clicking the 'Create New Habit' button at the top. Fill in the habits n
 
 ![Alt text](imgs/image-2.png)
 
-You can then add in yoour daily enteries to your specific habits by clicking the 'Add Entry' button and filling in the value. 
+You can then add in your daily entries to your specific habits by clicking the 'Add Entry' button and filling in the value. 
 
 ![Alt text](imgs/image-3.png)
 
